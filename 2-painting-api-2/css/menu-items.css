@@ -1,0 +1,21 @@
+.menu li{
+    background-image: paint(vice-city-menu);
+    --vice-city-menu-offset: 10;
+    --vice-city-menu-color: #1F4882;
+}
+
+.menu li.up {
+    --vice-city-menu-direction: up;
+}
+
+.menu li.right {
+    --vice-city-menu-direction: right;
+}
+
+.menu li.down {
+    --vice-city-menu-direction: down;
+}
+
+.menu li.left {
+    --vice-city-menu-direction: left;
+}

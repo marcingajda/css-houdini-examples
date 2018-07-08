@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+}
+
+.fake-body {
+    overflow: scroll;
+    height: 100vh;
+}
+
+.header {
+    height: 200px;
+    position: fixed;
+    background: black;
+    width: calc(100% - 15px);
+}
+
+.header-inner {
+    width: calc(900px - 75px - 75px);
+    margin: auto
+}
+
+.header .image {
+    border: 10px solid white;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(200px, 50px);
+    background: url('../media/houdini.jpg') 50% 50%;
+    background-size: cover;
+}
+
+.content {
+    width: 900px;
+    padding: 400px 20px 20px;
+    margin: auto;
+}
+
+.sidebar {
+    width: 280px;
+    background: darkorchid;
+    float: right;
+    position: relative;
+    padding: 10px;
+    /*animator: sticky-sidebar;*/
+}

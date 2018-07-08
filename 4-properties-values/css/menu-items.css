@@ -1,0 +1,26 @@
+.menu li{
+    --vice-city-menu-offset: 0;
+    --vice-city-menu-color: #1F4882;
+    transition: --vice-city-menu-offset 500ms;
+}
+
+.menu li:hover {
+    background-image: paint(vice-city-menu);
+    --vice-city-menu-offset: 15;
+}
+
+.menu li.up {
+    --vice-city-menu-direction: up;
+}
+
+.menu li.right {
+    --vice-city-menu-direction: right;
+}
+
+.menu li.down {
+    --vice-city-menu-direction: down;
+}
+
+.menu li.left {
+    --vice-city-menu-direction: left;
+}

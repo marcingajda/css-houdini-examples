@@ -1,0 +1,42 @@
+@font-face {
+    font-family: PriceDown;
+    src: url('../media/pricedown.ttf');
+}
+
+html,
+body,
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: url('../media/background.png');
+    background-size: cover;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    text-align: center;
+    font-family: 'PriceDown', sans-serif;
+    font-size: 3em;
+}
+
+.menu li {
+    width: fit-content;
+    margin: 10px auto;
+}
+
+.menu li a{
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 5px 30px;
+}

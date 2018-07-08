@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" type="text/css" href="css/menu-items.css">
+    </head>
+    <body>
+        <div class="container">
+
+            <ul class="menu">
+                <li class="right"><a href="#">Continue</a></li>
+                <li class="down"><a href="#">New Game</a></li>
+                <li class="left"><a href="#">Load Save</a></li>
+                <li class="up"><a href="#">Options</a></li>
+                <li class="down"><a href="#">Authors</a></li>
+                <li class="left"><a href="#">Exit</a></li>
+            </ul>
+
+        </div>
+        <script>
+            const ANIMATION_DURATION = 300;
+            CSS.paintWorklet.addModule('vice-city-menu.js');
+
+            document
+                .querySelectorAll('.menu li')
+                .forEach(item => {
+                    item.addEventListener('mouseenter', event => onMouseEnterHandler(item, event));
+                    item.addEventListener('mouseleave', event => onMouseLeaveHandler(item, event));
+                });
+
+            function onMouseEnterHandler(item, event) {
+                const start = performance.now();
+                item.classList.add('hover');
+
+                const tick = now => {
+                    const percent = (now - start) / ANIMATION_DURATION * 100;
+
+                    if(item.classList.contains('hover')) {
+                        item.style.cssText = `--vice-city-menu-percent: ${Math.min(percent, 100)}`;
+                    }
+
+                    if(percent < 100) {
+                        requestAnimationFrame(tick);
+                    }
+                };
+                requestAnimationFrame(tick);
+            }
+
+            function onMouseLeaveHandler(item, event) {
+                item.classList.remove('hover');
+                item.style.cssText = '';
+            }
+        </script>
+    </body>
+</html>

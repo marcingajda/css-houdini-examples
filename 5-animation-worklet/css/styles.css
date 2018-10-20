@@ -2,6 +2,20 @@ body {
     margin: 0;
 }
 
+.scroll {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    line-height: 50px;
+    z-index: 2;
+    cursor: pointer;
+}
+
 .fake-body {
     overflow: scroll;
     height: 100vh;
@@ -16,7 +30,8 @@ body {
 
 .header-inner {
     width: calc(900px - 75px - 75px);
-    margin: auto
+    margin: auto;
+    position: relative;
 }
 
 .header .image {
@@ -26,21 +41,27 @@ body {
     border-radius: 50%;
     position: absolute;
     transform: translate(200px, 50px);
-    background: url('../media/houdini.jpg') 50% 50%;
+    background: url('../media/houdini.png') 50% 50%;
     background-size: cover;
+}
+
+.header .title {
+    position: absolute;
+    top: -200px;
+    left: 20px;
+    color: white;
+    font-family: sans-serif;
 }
 
 .content {
     width: 900px;
     padding: 400px 20px 20px;
     margin: auto;
+    font: 14px/20px sans-serif;
+    text-align: justify;
 }
 
-.sidebar {
-    width: 280px;
-    background: darkorchid;
-    float: right;
-    position: relative;
-    padding: 10px;
-    /*animator: sticky-sidebar;*/
+.content .footer {
+    text-align: right;
+    font-style: italic;
 }

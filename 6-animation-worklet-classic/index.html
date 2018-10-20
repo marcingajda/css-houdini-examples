@@ -6,10 +6,14 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
+    <div class="scroll">&downarrow;</div>
     <div class="fake-body">
         <div class="header">
             <div class="header-inner">
                 <div class="image"></div>
+                <h1 class="title">
+                    Harry Houdini
+                </h1>
             </div>
         </div>
         <div class="content">
@@ -44,31 +48,8 @@
             <p>
                 W latach 20. XX w., po śmierci matki, którą bardzo kochał, Houdini poświęcił swoją energię na demaskowanie samozwańczych parapsychologów i mediów. Do podobnych działań zainspirował też innych iluzjonistów: Jamesa Randi i P. C. Sorcara, a nawet Penn i Teller. Praktyka Houdiniego w sztuce iluzji pozwalała mu ujawniać oszustwa, którym dawali się zwieść nawet uznani naukowcy. Został członkiem komitetu przy Scientific American, oferującego dużą nagrodę pieniężną każdemu, kto zademonstruje swe paranormalne zdolności. Dzięki wiedzy Houdiniego i pozostałych iluzjonistów – członków komitetu (w sumie komitet liczył pięciu członków), nagroda ta nigdy nie została wypłacona. Korzystając z rosnącej sławy „pogromcy duchów”, Houdini zaczął ujawniać oszustwa w owych seansach, w towarzystwie reportera i oficera policji. Prawdopodobnie najsłynniejszym medium tak zdemaskowanym była Mina Crandon, znana też jako medium Margery z Bostonu. Houdini spisał swoje doświadczenia z demaskowaniem spirytystów w książce A Magician Among the Spirits.
             </p>
-            <p>
-                Ta aktywność kosztowała Houdiniego utratę przyjaźni sir Arthura Conana Doyle’a, twórcy postaci Sherlocka Holmesa. Doyle, gorący wyznawca spirytyzmu pod koniec swego życia, nie dawał wiary oświadczeniom Houdiniego na ten temat. Doyle sądził, że sam Houdini jest potężnym medium spirytystycznym, uważając wiele jego sztuczek za przejawy działania sił paranormalnych, a jego demaskatorska działalność jest po prostu pozbywaniem się konkurencji (zobacz: Na skraju nieznanego Doyle’a, opublikowana po śmierci Houdiniego, w 1931 roku). Sprawa ta uczyniła z tych dwóch niegdysiejszych przyjaciół publicznych wrogów.
-            </p>
-            <p>
-                W swym testamencie Houdini zapisał ogromną bibliotekę Amerykańskiemu Towarzystwu Badań Psychiki pod warunkiem, że jej szef działu badań i wydawca czasopisma ASPR, J. Malcolm Bird, złoży dymisję. Po odmowie Wenta księgozbiór przekazano Bibliotece Kongresu Stanów Zjednoczonych.
-            </p>
-            <p>
-                Sława Harry’ego Houdiniego jako demaskatora spirytystów dorównywała tej, którą zdobył jako iluzjonista.
-            </p>
-            <p>
-                Ostatni występ Houdiniego miał miejsce w teatrze Garrick Theatre w Detroit w stanie Michigan dnia 24 października 1926. Następnego dnia został hospitalizowany w Detroit's Grace Hospital. Houdini zmarł na zapalenie otrzewnej w następstwie przechodzonego zapalenia wyrostka robaczkowego, 31 października 1926 roku, w wieku 52 lat.
-            </p>
-            <p>
-                Szeroko znana legenda miejska głosi, iż chorobę spowodował student Uniwersytetu McGill J. Gordon Whitehead, 22 października 1926 w Montrealu zadając mu wielokrotne ciosy w podbrzusze. Naocznymi świadkami tego zdarzenia mieli być studenci owego uniwersytetu, Jacques Price i Sam Smilovitz (w innej wersji: Jack Price i Sam Smiley). Ich relacje są w zasadzie zgodne. Ta poniżej jest relacją Price’a.
-            </p>
-            <p>
-                Według Price’a, Houdini leżał na swej kanapie po występie, pozując pewnemu studentowi sztuki. Wówczas wszedł Whitehead i spytał, czy to prawda, że Houdini może przyjąć dowolnie silny cios w brzuch. Houdini potwierdził. Zanim Price zdążył zaprotestować, Houdini został powalony i Whiteahead przystąpił do zadawania mu ciosów w brzuch, dopóki ten nie zaczął okazywać oznak bólu. Price opowiada, że Houdini po prostu nie miał czasu właściwie się przygotować do przyjęcia ciosów, nie był też w odpowiedniej pozycji, by móc to zrobić.
-            </p>
-            <p>
-                Na podstawie relacji Price’a i Smileya firma ubezpieczeniowa orzekła, że do śmierci doszło w wyniku incydentu w garderobie i wypłaciła podwójną sumę ubezpieczenia. Wersję tę podważa jednak współczesna medycyna, zaprzeczając, by pobicie mogło być przyczyną choroby takiej, jak ta Houdiniego.
-            </p>
-            <p>
-                Pogrzeb Houdiniego odbył się 4 listopada w Nowym Jorku, w kondukcie przeszły tysiące żałobników. Houdini został odprowadzony na cmentarz Machpelach w Queens, a na jego pomniku wyryto herb Amerykańskiego Towarzystwa Iluzjonistów. Jego członkowie do dziś odbywają rytuał „łamania czarodziejskiej różdżki” przy grobie Houdiniego w każdą rocznicę jego śmierci.
-
-
+            <p class="footer">
+                <a href="https://pl.wikipedia.org/wiki/Harry_Houdini">Wikipedia</a>
             </p>
         </div>
     </div>
@@ -84,6 +65,9 @@
             },
             header: {
                 translateTop: {start: 0, stop: -100}
+            },
+            title: {
+                translateTop: {start: -200, stop: 310}
             }
         };
 
@@ -95,6 +79,20 @@
         }
 
         document
+            .querySelector('.scroll')
+            .addEventListener('click', e => {
+                const start = Date.now();
+                const body = document.querySelector('.fake-body');
+                let interval = setInterval(() => {
+                    if(body.scrollHeight - body.scrollTop === body.clientHeight) {
+                        clearInterval(interval);
+                        console.log((Date.now() - start) / 1000);
+                    }
+                    body.scrollBy(0, 2);
+                }, 1);
+            });
+
+        document
             .querySelector('.fake-body')
             .addEventListener('scroll', e => {
                 const scrollPosition = e.target.scrollTop;
@@ -104,6 +102,7 @@
                 const imageTranslateTop = calculatePropertyValue('image', 'translateTop', animationPercent);
                 const imageScale = calculatePropertyValue('image', 'scale', animationPercent);
                 const headerTranslateTop = calculatePropertyValue('header', 'translateTop', animationPercent);
+                const titleTranslateTop = calculatePropertyValue('title', 'translateTop', animationPercent);
 
                 const imageTransformation = new CSSTransformValue([
                     new CSSTranslate(
@@ -120,6 +119,13 @@
                     ),
                 ]);
 
+                const titleTransformation = new CSSTransformValue([
+                    new CSSTranslate(
+                        CSS.px(0),
+                        CSS.px(titleTranslateTop)
+                    ),
+                ]);
+
                 document
                     .querySelector(`.image`)
                     .attributeStyleMap
@@ -129,6 +135,11 @@
                     .querySelector(`.header`)
                     .attributeStyleMap
                     .set('transform', headerTransformation);
+
+                document
+                    .querySelector(`.title`)
+                    .attributeStyleMap
+                    .set('transform', titleTransformation);
             });
 
     </script>

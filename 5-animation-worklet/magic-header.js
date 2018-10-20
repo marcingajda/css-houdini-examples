@@ -5,7 +5,7 @@ class MagicHeaderAnimator
     }
 
     animate(currentTime, effect) {
-        effect.localTime = currentTime * 5;
+        effect.localTime = currentTime * 3;
     }
 }
 
